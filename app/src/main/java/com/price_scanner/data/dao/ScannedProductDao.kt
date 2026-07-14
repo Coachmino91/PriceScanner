@@ -1,20 +1,31 @@
-@androidx.room.Dao
+package com.price_scanner.data.dao
+
+import androidx.room.Dao
+import androidx.room.Delete
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
+import androidx.room.Update
+import com.price_scanner.data.entities.ScannedProduct
+import kotlinx.coroutines.flow.Flow
+
+@Dao
 interface ScannedProductDao {
-    @androidx.room.Insert(onConflict = androidx.room.OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertProduct(product: ScannedProduct)
 
-    @androidx.room.Update
+    @Update
     suspend fun updateProduct(product: ScannedProduct)
 
-    @androidx.room.Delete
+    @Delete
     suspend fun deleteProduct(product: ScannedProduct)
 
-    @androidx.room.Query("SELECT * FROM scanned_products ORDER BY scannedAt DESC")
-    fun getAllProducts(): kotlinx.coroutines.flow.Flow<List<ScannedProduct>>
+    @Query("SELECT * FROM scanned_products ORDER BY scannedAt DESC")
+    fun getAllProducts(): Flow<List<ScannedProduct>>
 
-    @androidx.room.Query("SELECT SUM(price * quantity) FROM scanned_products")
-    fun getTotalPrice(): kotlinx.coroutines.flow.Flow<Double>
+    @Query("SELECT SUM(price * quantity) FROM scanned_products")
+    fun getTotalPrice(): Flow<Double>
 
-    @androidx.room.Query("DELETE FROM scanned_products")
+    @Query("DELETE FROM scanned_products")
     suspend fun clearAll()
 }
