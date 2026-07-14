@@ -2,14 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    android:background="?attr/selectableItemBackground"
     android:orientation="vertical"
-    android:padding="8dp"
-    android:background="?attr/selectableItemBackground">
+    android:padding="12dp">
 
     <TextView
         android:id="@+id/productNameTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="#111111"
         android:textSize="16sp"
         android:textStyle="bold" />
 
@@ -17,14 +19,16 @@
         android:id="@+id/productPriceTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:layout_marginTop="4dp" />
+        android:layout_marginTop="4dp"
+        android:textColor="#333333"
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/productQuantityTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:layout_marginTop="4dp" />
+        android:layout_marginTop="4dp"
+        android:textColor="#333333"
+        android:textSize="14sp" />
 
 </LinearLayout>
