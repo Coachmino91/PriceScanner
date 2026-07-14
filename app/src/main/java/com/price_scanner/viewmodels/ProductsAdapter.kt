@@ -1,12 +1,21 @@
+package com.price_scanner.viewmodels
+
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
+import com.price_scanner.R
+import com.price_scanner.data.entities.ScannedProduct
+import com.price_scanner.databinding.ItemProductBinding
+
 class ProductsAdapter(
     private val products: List<ScannedProduct>,
     private val onQuantityChanged: (ScannedProduct) -> Unit
-) : androidx.recyclerview.widget.RecyclerView.Adapter<ProductsAdapter.ProductViewHolder>() {
+) : RecyclerView.Adapter<ProductsAdapter.ProductViewHolder>() {
 
-    override fun onCreateViewHolder(parent: android.view.ViewGroup, viewType: Int): ProductViewHolder {
-        val view = android.view.LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_product, parent, false)
-        return ProductViewHolder(view)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
+        val binding = ItemProductBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ProductViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
@@ -15,15 +24,14 @@ class ProductsAdapter(
 
     override fun getItemCount(): Int = products.size
 
-    inner class ProductViewHolder(itemView: android.view.View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
+    inner class ProductViewHolder(
+        private val binding: ItemProductBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(product: ScannedProduct) {
-            itemView.findViewById<android.widget.TextView>(R.id.productNameTextView).text = product.productName
-            itemView.findViewById<android.widget.TextView>(R.id.productPriceTextView).text = String.format("%.2f", product.price)
-            itemView.findViewById<android.widget.TextView>(R.id.productQuantityTextView).text = "x${product.quantity}"
-
-            itemView.setOnClickListener {
-                onQuantityChanged(product)
-            }
+            binding.productNameTextView.text = product.productName
+            binding.productPriceTextView.text = String.format("%.2f", product.price)
+            binding.productQuantityTextView.text = "x${product.quantity}"
+            binding.root.setOnClickListener { onQuantityChanged(product) }
         }
     }
 }
