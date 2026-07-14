@@ -1,6 +1,11 @@
-@androidx.room.Entity(tableName = "scanned_products")
+package com.price_scanner.data.entities
+
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "scanned_products")
 data class ScannedProduct(
-    @androidx.room.PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
     val productName: String,
     val price: Double,
