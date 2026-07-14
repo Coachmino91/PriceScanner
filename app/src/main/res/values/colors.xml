@@ -1,0 +1,10 @@
+theme: {
+  colorPrimary: '#000000'
+  colorPrimaryDark: '#000000'
+  colorAccent: '#FF5722'
+  colorBackground: '#121212'
+  colorOnBackground: '#FFFFFF'
+  colorSurface: '#1E1E1E'
+  colorOnSurface: '#FFFFFF'
+  colorOnPrimary: '#000000'
+}
