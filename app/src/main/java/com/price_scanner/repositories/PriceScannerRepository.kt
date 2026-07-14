@@ -1,3 +1,8 @@
+package com.price_scanner.repositories
+
+import com.price_scanner.data.dao.ScannedProductDao
+import com.price_scanner.data.entities.ScannedProduct
+
 class PriceScannerRepository(
     private val productDao: ScannedProductDao
 ) {
