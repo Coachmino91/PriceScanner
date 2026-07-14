@@ -1,0 +1,21 @@
+# Android generated files
+*.iml
+.gradle/
+local.properties
+.idea/
+.DS_Store
+build/
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Keystore e credenziali — NON versionare mai
+*.keystore
+*.jks
+keystore.properties
+defaultConfig.properties
+signing.properties
+
+# Variabili d'ambiente locali
+.env
+.env.local
